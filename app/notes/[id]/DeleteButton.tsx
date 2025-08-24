@@ -4,7 +4,7 @@ import css from "@/components/NoteList/NoteList.module.css";
 import { deleteNote } from "@/lib/api";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { Note } from "@/lib/api";
+import { Note } from "@/types/note";
 
 interface Props {
   note: Note;

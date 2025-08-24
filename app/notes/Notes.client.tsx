@@ -4,7 +4,6 @@ import { useState } from "react";
 import { fetchNotes, NoteProps } from "@/lib/api";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useDebouncedCallback } from "use-debounce";
-
 import SearchBox from "@/components/SearchBox/SearchBox";
 import css from "./NotesPage.module.css";
 import Modal from "@/components/Modal/Modal";

@@ -1,5 +1,5 @@
 import css from "./NoteList.module.css";
-import { Note } from "@/lib/api";
+import { Note } from "@/types/note";
 import Link from "next/link";
 import DeleteButton from "@/app/notes/[id]/DeleteButton";
 

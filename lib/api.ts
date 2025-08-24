@@ -1,14 +1,6 @@
 import axios from "axios";
 import { NoteFormValues } from "@/components/NoteForm/NoteForm";
-
-export interface Note {
-  id: string;
-  title: string;
-  content: string;
-  updatedAt: string;
-  createdAt: string;
-  tag: "Todo" | "Work" | "Personal" | "Meeting" | "Shopping";
-}
+import { Note } from "@/types/note";
 
 export interface NoteProps {
   notes: Note[];

@@ -2,15 +2,12 @@ import { createPortal } from "react-dom";
 import css from "./Modal.module.css";
 import { useEffect } from "react";
 
-interface ModalPrors {
+interface ModalProps {
   children: React.ReactNode;
   onClose: () => void;
 }
 
-export default function Modal({
-  children,
-  onClose,
-}: ModalPrors): React.ReactPortal {
+const Modal: React.FC<ModalProps> = ({ children, onClose }) => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -44,4 +41,6 @@ export default function Modal({
     </div>,
     document.body
   );
-}
+};
+
+export default Modal;

@@ -1,13 +1,26 @@
 import css from "./NoteList.module.css";
 import { Note } from "@/types/note";
 import Link from "next/link";
-import DeleteButton from "@/app/notes/[id]/DeleteButton";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
+import { deleteNote } from "@/lib/api";
 
 interface NoteListProps {
   notes: Note[];
 }
 
 export default function NoteList({ notes }: NoteListProps) {
+  const queryClient = useQueryClient();
+
+  const { mutate } = useMutation({
+    mutationFn: deleteNote,
+    onSuccess() {
+      queryClient.invalidateQueries({ queryKey: ["notes"] });
+    },
+    onError() {
+      console.log("Error");
+    },
+  });
+
   if (notes.length === 0) {
     return null;
   }
@@ -21,7 +34,14 @@ export default function NoteList({ notes }: NoteListProps) {
           <div className={css.footer}>
             <span className={css.tag}>{note.tag}</span>
             <Link href={`/notes/${note.id}`}>View details</Link>
-            <DeleteButton note={note} />
+            <button
+              className={css.button}
+              onClick={() => {
+                mutate(note.id);
+              }}
+            >
+              Delete
+            </button>
           </div>
         </li>
       ))}

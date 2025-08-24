@@ -4,7 +4,7 @@ import { Note } from "@/types/note";
 
 export interface NoteProps {
   notes: Note[];
-  perPage: number;
+  // perPage: number;
   totalPages: number;
 }
 
@@ -43,10 +43,10 @@ export const deleteNote = async (id: string) => {
   return response.data;
 };
 
-export const createNote = async (createdAt: NoteFormValues): Promise<Note> => {
+export const createNote = async (noteData: NoteFormValues): Promise<Note> => {
   const response = await axios.post<Note>(
     "https://notehub-public.goit.study/api/notes",
-    createdAt,
+    noteData,
     {
       headers: {
         Authorization: `Bearer ${notehubKey}`,

@@ -4,7 +4,6 @@ import { Note } from "@/types/note";
 
 export interface NoteProps {
   notes: Note[];
-  // perPage: number;
   totalPages: number;
 }
 
@@ -12,7 +11,8 @@ const notehubKey = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
 
 export const fetchNotes = async (
   search: string,
-  page: number
+  page: number,
+  tag: string | undefined
 ): Promise<NoteProps> => {
   const response = await axios.get<NoteProps>(
     "https://notehub-public.goit.study/api/notes",
@@ -21,6 +21,7 @@ export const fetchNotes = async (
         search: search,
         page,
         perPage: 12,
+        tag,
       },
       headers: {
         Authorization: `Bearer ${notehubKey}`,

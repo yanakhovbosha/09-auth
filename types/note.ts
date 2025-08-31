@@ -6,3 +6,4 @@ export interface Note {
   createdAt: string;
   tag: "Todo" | "Work" | "Personal" | "Meeting" | "Shopping";
 }
+export type Tags = "Todo" | "Work" | "Personal" | "Meeting" | "Shopping";

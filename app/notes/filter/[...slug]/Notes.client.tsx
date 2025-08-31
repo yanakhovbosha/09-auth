@@ -12,15 +12,23 @@ import Pagination from "@/components/Pagination/Pagination";
 import Loader from "@/app/loading";
 import Error from "./error";
 import NoteList from "@/components/NoteList/NoteList";
+// import { useParams } from "next/navigation";
+import { Tags } from "@/types/note";
 
-export default function NotesClient() {
+interface Props {
+  tag?: Tags;
+}
+
+export default function NotesClient({ tag }: Props) {
+  // const { slug } = useParams<{ slug: string[] }>();
+  // const category = slug[0];
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data, isLoading, isError, error } = useQuery<NoteProps>({
     queryKey: ["notes", { search: searchQuery, page: currentPage }],
-    queryFn: () => fetchNotes(searchQuery, currentPage),
+    queryFn: () => fetchNotes(searchQuery, currentPage, tag),
     placeholderData: keepPreviousData,
   });
 

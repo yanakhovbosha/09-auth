@@ -27,7 +27,7 @@ export default function NotesClient({ tag }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data, isLoading, isError, error } = useQuery<NoteProps>({
-    queryKey: ["notes", { search: searchQuery, page: currentPage }],
+    queryKey: ["notes", { search: searchQuery, page: currentPage, tag }],
     queryFn: () => fetchNotes(searchQuery, currentPage, tag),
     placeholderData: keepPreviousData,
   });

@@ -14,7 +14,7 @@ interface Props {
 export default async function NotesPage({ params }: Props) {
   const queryClient = new QueryClient();
   const { slug } = await params;
-  const tag = slug[0] === "all" ? undefined : (slug[0] as Tags);
+  const tag = slug[0] === "All" ? undefined : (slug[0] as Tags);
 
   await queryClient.prefetchQuery({
     queryKey: ["note", { search: "", page: 1, tag }],

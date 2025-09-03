@@ -12,7 +12,6 @@ import Pagination from "@/components/Pagination/Pagination";
 import Loader from "@/app/loading";
 import Error from "./error";
 import NoteList from "@/components/NoteList/NoteList";
-// import { useParams } from "next/navigation";
 import { Tags } from "@/types/note";
 
 interface Props {
@@ -20,8 +19,6 @@ interface Props {
 }
 
 export default function NotesClient({ tag }: Props) {
-  // const { slug } = useParams<{ slug: string[] }>();
-  // const category = slug[0];
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);

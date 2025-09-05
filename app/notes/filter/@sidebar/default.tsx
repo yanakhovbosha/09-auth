@@ -7,11 +7,11 @@ const tags: Tags[] = ["Todo", "Work", "Personal", "Meeting", "Shopping"];
 export default async function SidebarNotes() {
   return (
     <ul className={css.menuList}>
-      <li>
+      {/* <li>
         <Link href={"/notes/action/create"} className={css.button}>
           Create note +
         </Link>
-      </li>
+      </li> */}
       <li className={css.menuItem}>
         <Link href={"/notes/filter/All"} className={css.menuLink}>
           All notes

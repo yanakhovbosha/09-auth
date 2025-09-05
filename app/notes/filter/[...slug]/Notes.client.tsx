@@ -6,12 +6,12 @@ import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useDebouncedCallback } from "use-debounce";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import css from "./NotesPage.module.css";
-// import NoteForm from "@/components/NoteForm/NoteForm";
 import Pagination from "@/components/Pagination/Pagination";
 import Loader from "@/app/loading";
 import Error from "./error";
 import NoteList from "@/components/NoteList/NoteList";
 import { Tags } from "@/types/note";
+import Link from "next/link";
 
 interface Props {
   tag?: Tags;
@@ -43,11 +43,17 @@ export default function NotesClient({ tag }: Props) {
             onPageChange={setCurrentPage}
           />
         )}
+        <Link
+          href={"/notes/action/create"}
+          scroll={false}
+          className={css.button}
+        >
+          Create note +
+        </Link>
       </header>
       {isLoading && <Loader />}
       {isError && <Error error={error} />}
       {data?.notes && <NoteList notes={data?.notes ?? []} />}
-      {/* <NoteForm /> */}
     </div>
   );
 }

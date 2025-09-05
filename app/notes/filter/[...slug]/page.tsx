@@ -6,12 +6,13 @@ import {
 import NotesClient from "./Notes.client";
 import { fetchNotes } from "@/lib/api";
 import { Tags } from "@/types/note";
+import { Metadata } from "next";
 
 interface Props {
   params: Promise<{ slug: string[] }>;
 }
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const note = slug[0];
   return {

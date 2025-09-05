@@ -43,11 +43,7 @@ export default function NotesClient({ tag }: Props) {
             onPageChange={setCurrentPage}
           />
         )}
-        <Link
-          href={"/notes/action/create"}
-          scroll={false}
-          className={css.button}
-        >
+        <Link href={"/notes/action/create"} className={css.button}>
           Create note +
         </Link>
       </header>

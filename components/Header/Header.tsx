@@ -1,6 +1,7 @@
 import css from "@/components/Header/Header.module.css";
 import Link from "next/link";
 import TagsMenu from "../TagsMenu/TagsMenu";
+import AuthNavigation from "../AuthNavigation/AuthNavigation";
 
 export default async function Header() {
   return (
@@ -16,6 +17,7 @@ export default async function Header() {
           <li>
             <TagsMenu />
           </li>
+          <AuthNavigation />
         </ul>
       </nav>
     </header>

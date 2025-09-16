@@ -1,6 +1,7 @@
 import { NoteFormValues } from "@/components/NoteForm/NoteForm";
 import { Note } from "@/types/note";
 import { nextServer } from "./api";
+import { cookies } from "next/headers";
 
 export interface NoteProps {
   notes: Note[];
@@ -54,4 +55,15 @@ export const fetchNoteById = async (id: Note["id"]) => {
     },
   });
   return response.data;
+};
+
+export const checkServerSession = async () => {
+  const cookieStore = await cookies();
+  const res = await nextServer.get("/auth/session", {
+    headers: {
+      Cookie: cookieStore.toString(),
+      Authorization: `Bearer ${baseURL}`,
+    },
+  });
+  return res;
 };

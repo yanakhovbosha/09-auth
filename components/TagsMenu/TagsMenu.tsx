@@ -10,6 +10,9 @@ const tags: Tags[] = ["Todo", "Work", "Personal", "Meeting", "Shopping"];
 export default function TagsMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  // const [tags, setTags] = useState();
+
+  // useEffect(() => {});
   return (
     <div className={css.menuContainer}>
       <button onClick={toggle} className={css.menuButton}>

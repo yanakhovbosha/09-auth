@@ -11,7 +11,8 @@ import Error from "./error";
 import NoteList from "@/components/NoteList/NoteList";
 import { Tags } from "@/types/note";
 import Link from "next/link";
-import { fetchNotes, NoteProps } from "@/lib/api/serverApi";
+import { fetchNotes } from "@/lib/api/clientApi";
+import { NoteProps } from "@/lib/api/serverApi";
 
 interface Props {
   tag?: Tags;

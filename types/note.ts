@@ -7,8 +7,3 @@ export interface Note {
   tag: "Todo" | "Work" | "Personal" | "Meeting" | "Shopping";
 }
 export type Tags = "Todo" | "Work" | "Personal" | "Meeting" | "Shopping";
-export type User = {
-  username: string;
-  email: string;
-  avatar: string;
-};

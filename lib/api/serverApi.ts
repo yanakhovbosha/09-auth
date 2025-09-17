@@ -1,5 +1,5 @@
 import { NoteFormValues } from "@/components/NoteForm/NoteForm";
-import { Note } from "@/types/note";
+import { Note, User } from "@/types/note";
 import { nextServer } from "./api";
 import { cookies } from "next/headers";
 
@@ -66,4 +66,14 @@ export const checkServerSession = async () => {
     },
   });
   return res;
+};
+
+export const getServerMe = async (): Promise<User> => {
+  const cookieStore = await cookies();
+  const { data } = await nextServer.get("/users/me", {
+    headers: {
+      Cookie: cookieStore.toString(),
+    },
+  });
+  return data;
 };

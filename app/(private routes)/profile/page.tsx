@@ -3,6 +3,29 @@ import css from "./ProfilePage.module.css";
 import { getServerMe } from "@/lib/api/serverApi";
 import Image from "next/image";
 
+export async function generateMetadata() {
+  const user = await getServerMe();
+  return {
+    title: user.username,
+    description: user.email,
+    openGraph: {
+      title: user.username,
+      description: user.email,
+      url:
+        user?.avatar ||
+        "https://ac.goit.global/fullstack/react/default-avatar.jpg",
+      images: [
+        {
+          url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+          width: 1200,
+          height: 630,
+          alt: user.username,
+        },
+      ],
+    },
+  };
+}
+
 export default async function Profile() {
   const user = await getServerMe();
   return (
@@ -23,7 +46,6 @@ export default async function Profile() {
             alt="User Avatar"
             width={120}
             height={120}
-            priority
             className={css.avatar}
           />
         </div>

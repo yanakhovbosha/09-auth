@@ -16,10 +16,14 @@ export default async function Profile() {
         </div>
         <div className={css.avatarWrapper}>
           <Image
-            src={user.avatar}
-            alt={user.username}
+            src={
+              user?.avatar ||
+              "https://ac.goit.global/fullstack/react/default-avatar.jpg"
+            }
+            alt="User Avatar"
             width={120}
             height={120}
+            priority
             className={css.avatar}
           />
         </div>

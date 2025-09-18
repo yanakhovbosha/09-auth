@@ -60,6 +60,15 @@ export const getMe = async () => {
   return data;
 };
 
+export type UpdateRequest = {
+  username: string;
+};
+
+export const patchMe = async (username: UpdateRequest) => {
+  const { data } = await nextServer.patch<User>("/users/me", username);
+  return data;
+};
+
 export const logout = async (): Promise<void> => {
   await nextServer.post("/auth/logout");
 };

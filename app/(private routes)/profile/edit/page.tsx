@@ -5,8 +5,10 @@ import Image from "next/image";
 import css from "./EditProfilePage.module.css";
 import { getMe, patchMe } from "@/lib/api/clientApi";
 import { useEffect, useState } from "react";
+import { useAuthStore } from "@/lib/store/authStore";
 
 export default function EditProfile() {
+  const { setUser } = useAuthStore();
   const [username, setUsername] = useState("");
   const [avatar, setAvatar] = useState("");
   const [email, setEmail] = useState("");
@@ -29,6 +31,7 @@ export default function EditProfile() {
     event.preventDefault();
     const res = await patchMe({ username: username });
     if (res) {
+      setUser(res);
       router.push("/profile");
     }
   };

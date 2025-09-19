@@ -5,10 +5,11 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useNoteDraftStore } from "@/lib/store/noteStore";
 import { createNote } from "@/lib/api/clientApi";
+import React from "react";
 
 export interface NoteFormValues {
   title: string;
-  content?: string;
+  content: string | undefined;
   tag: string;
 }
 
@@ -40,12 +41,13 @@ export default function NoteForm() {
     },
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     mutate(draft);
   };
 
   return (
-    <form action={handleSubmit} className={css.form}>
+    <form onSubmit={handleSubmit} className={css.form}>
       <div className={css.formGroup}>
         <label htmlFor="title">Title</label>
         <input
